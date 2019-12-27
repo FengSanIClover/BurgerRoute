@@ -5,11 +5,22 @@ class Checkout extends Component {
 
     state = {
         ingredients: {
-            meat: 1,
-            salad: 1,
-            bacon: 1,
-            cheese: 1
+            meat: 0,
+            salad: 0,
+            bacon: 0,
+            cheese: 0
         }
+    }
+
+    componentDidMount() {
+        const query = new URLSearchParams(this.props.location.search);
+        const ingredients = {};
+        for (let param of query.entries()) {
+            // ["salad","1"]
+            ingredients[param[0]] = +param[1];
+        }
+
+        this.setState({ ingredients: ingredients })
     }
 
     checkoutCanceledHandler = () => {
