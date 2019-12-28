@@ -23,7 +23,7 @@ class ContactData extends Component {
         this.setState({ loading: true });
         const order = {
             ingredients: this.props.ingredients,
-            price: this.props.totalPrice,
+            price: Number.parseFloat(this.props.totalPrice).toFixed(2),
             customer: {
                 name: 'Clover',
                 address: {
